@@ -4,7 +4,11 @@
 
 @section('content')
 
-    <div class="container py-5">
+    <div class="container py-3">
+
+        <div class="fluid-container text-center mb-3">
+            <a href="{{route('comics.create')}}" class="btn btn-primary">Add a missing comic</a>
+        </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
 
