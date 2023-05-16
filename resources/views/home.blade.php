@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container text-center py-5">
-        <h1 class="display-1">Benvenuto nel mondo DC-Comics</h1>
+        <h1 class="display-1">Welcome to the DC-Comics World!</h1>
     </div>
-    
+
 @endsection
