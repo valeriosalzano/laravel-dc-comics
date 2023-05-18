@@ -42,7 +42,7 @@ class ComicController extends Controller
             'title' => 'required|string|max:50',
             'description' => 'nullable|string',
             'thumb' => 'required|url|max:255',
-            'price' => 'required|decimal:0,2|max:9999.99',
+            'price' => 'required|string|max:8',
             'series' => 'required|string|max:50',
             'sale_date' => 'required|date',
             'type' => 'required|string|max:20',
@@ -52,7 +52,9 @@ class ComicController extends Controller
 
         $newComic = new Comic();
         $newComic->fill($form_data);
-        $newComic->price = "$".$newComic->price;
+        if (!str_contains($newComic->price, '$')) {
+            $newComic->price = "$" . $newComic->price;
+        }
         $newComic->save();
 
         return to_route('comics.show', ['comic' => $newComic->id]);
@@ -90,7 +92,20 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'nullable|string',
+            'thumb' => 'required|url|max:255',
+            'price' => 'required|string|max:8',
+            'series' => 'required|string|max:50',
+            'sale_date' => 'required|date',
+            'type' => 'required|string|max:20',
+        ]);
+
         $form_data = $request->all();
+        if (!str_contains($form_data['price'], '$')) {
+            $form_data['price'] = "$" . $form_data['price'];
+        }
         $comic->update($form_data);
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);

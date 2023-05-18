@@ -1,53 +1,71 @@
 @extends('layouts.app')
 
 @section('page-title')
-    Add a new comic 
+    Add a new comic
 @endsection
 
 @section('content')
+    <div class="container">
 
-    <form method="POST" action=" {{ route('comics.update',['comic' => $comic->id] ) }}" class="container">
+        @include('partials.validation.errors_alert')
 
-        @csrf
+        <form method="POST" action=" {{ route('comics.update', ['comic' => $comic->id]) }}">
 
-        @method('PUT')
+            @csrf
 
-        <div class="mb-3">
-            <label for="thumb" class="form-label">Comic cover link:</label>
-            <input type="text" class="form-control" id="thumb" name="thumb" value="{{$comic->thumb}}">
-        </div>
+            @method('PUT')
 
-        <div class="mb-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{$comic->title}}">
-        </div>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = [
+                    'default' => $comic->thumb,
+                    'type' => 'text',
+                    'field' => 'thumb',
+                    'label' => 'Comic cover link',
+                ]
+            )
 
-        <div class="mb-3">
-            <label for="series" class="form-label">Series:</label>
-            <input type="text" class="form-control" id="series" name="series" value="{{$comic->series}}">
-        </div>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = ['default' => $comic->title, 'type' => 'text', 'field' => 'title', 'label' => 'Title']
+            )
 
-        <div class="mb-3">
-            <label for="type" class="form-label">Type:</label>
-            <input type="text" class="form-control" id="type" name="type" value="{{$comic->type}}">
-        </div>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = ['default' => $comic->series, 'type' => 'text', 'field' => 'series', 'label' => 'Series']
+            )
 
-        <div class="mb-3">
-            <label for="sale_date" class="form-label">Date:</label>
-            <input type="date" class="form-control" id="sale_date" name="sale_date" value="{{$comic->sale_date}}">
-        </div>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = ['default' => $comic->type, 'type' => 'text', 'field' => 'type', 'label' => 'Type']
+            )
 
-        <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="text" class="form-control" id="price" name="price" value="{{$comic->price}}">
-        </div>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = [
+                    'default' => $comic->sale_date,
+                    'type' => 'date',
+                    'field' => 'sale_date',
+                    'label' => 'Date',
+                ]
+            )
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description">{{$comic->description}}</textarea>
-        </div>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = ['default' => $comic->price, 'type' => 'float', 'field' => 'price', 'label' => 'Price']
+            )
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            @include(
+                'partials.forms.edit_form_element',
+                $data = [
+                    'default' => $comic->description,
+                    'type' => 'textarea',
+                    'field' => 'description',
+                    'label' => 'Description',
+                ]
+            )
 
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 @endsection
