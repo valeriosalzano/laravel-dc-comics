@@ -10,40 +10,21 @@
 
         @csrf
 
-        <div class="mb-3">
-            <label for="thumb" class="form-label">Comic cover link:</label>
-            <input type="text" class="form-control" id="thumb" name="thumb">
-        </div>
+        
 
-        <div class="mb-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" class="form-control" id="title" name="title">
-        </div>
+        @include('partials.forms.create_form_element',$data = ['type'=> 'text', 'field'=>'thumb', 'label' => 'Comic cover link'])
 
-        <div class="mb-3">
-            <label for="series" class="form-label">Series:</label>
-            <input type="text" class="form-control" id="series" name="series">
-        </div>
+        @include('partials.forms.create_form_element',$data = ['type'=> 'text', 'field'=>'title', 'label' => 'Title'])
 
-        <div class="mb-3">
-            <label for="type" class="form-label">Type:</label>
-            <input type="text" class="form-control" id="type" name="type">
-        </div>
+        @include('partials.forms.create_form_element',$data = ['type'=> 'text', 'field'=>'series', 'label' => 'Series'])
 
-        <div class="mb-3">
-            <label for="sale_date" class="form-label">Date:</label>
-            <input type="date" class="form-control" id="sale_date" name="sale_date">
-        </div>
+        @include('partials.forms.create_form_element',$data = ['type'=> 'text', 'field'=>'type', 'label' => 'Type'])
 
-        <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="text" class="form-control" id="price" name="price">
-        </div>
+        @include('partials.forms.create_form_element',$data = ['type'=> 'date', 'field'=>'sale_date', 'label' => 'Date'])
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" name="description"></textarea>
-        </div>
+        @include('partials.forms.create_form_element',$data = ['type'=> 'float', 'field'=>'price', 'label' => 'Price'])
+
+        @include('partials.forms.create_form_element',$data = ['type'=> 'textarea', 'field'=>'description', 'label' => 'Description'])
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
