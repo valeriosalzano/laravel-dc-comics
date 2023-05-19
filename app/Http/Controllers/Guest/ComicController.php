@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -35,20 +37,10 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
 
-        $request->validate([
-            'title' => 'required|string|max:50',
-            'description' => 'nullable|string',
-            'thumb' => 'required|url|max:255',
-            'price' => 'required|string|max:8',
-            'series' => 'required|string|max:50',
-            'sale_date' => 'required|date',
-            'type' => 'required|string|max:20',
-        ]);
-
-        $form_data = $request->all();
+        $form_data = $request->validated();
 
         $newComic = new Comic();
         $newComic->fill($form_data);
@@ -57,7 +49,7 @@ class ComicController extends Controller
         }
         $newComic->save();
 
-        return to_route('comics.show', ['comic' => $newComic->id]);
+        return to_route('comics.show', ['comic' => $newComic->id])->with('status', 'Success! Comic added.');
     }
 
     /**
@@ -90,25 +82,16 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
-        $request->validate([
-            'title' => 'required|string|max:50',
-            'description' => 'nullable|string',
-            'thumb' => 'required|url|max:255',
-            'price' => 'required|string|max:8',
-            'series' => 'required|string|max:50',
-            'sale_date' => 'required|date',
-            'type' => 'required|string|max:20',
-        ]);
 
-        $form_data = $request->all();
+        $form_data = $request->validated();
         if (!str_contains($form_data['price'], '$')) {
             $form_data['price'] = "$" . $form_data['price'];
         }
         $comic->update($form_data);
 
-        return redirect()->route('comics.show', ['comic' => $comic->id]);
+        return to_route('comics.show', ['comic' => $comic->id])->with('status', 'Success! Comic updated.');
     }
 
     /**

@@ -6,6 +6,8 @@
 
     <div class="container py-5 comic-card">
 
+        @include('partials.validation.success_alert')
+
         <div class="card text-bg-dark mb-3">
             <div class="row g-0">
                 <div class="col-md-4 overflow-hidden">

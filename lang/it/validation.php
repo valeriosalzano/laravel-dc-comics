@@ -162,26 +162,26 @@ return [
     |
     */
 
-    'custom' => [
-        'title' => [
-            'required' => 'Il titolo è un campo obbligatorio.',
-        ],
-        'thumb' => [
-            'required' => 'Il link all\'immagine è un campo obbligatorio.',
-        ],
-        'price' => [
-            'required' => 'Il prezzo è un campo obbligatorio.',
-        ],
-        'type' => [
-            'required' => 'La tipologia è un campo obbligatorio.',
-        ],
-        'series' => [
-            'required' => 'Il nome della serie è un campo obbligatorio.',
-        ],
-        'sale_date' => [
-            'required' => 'La data è un campo obbligatorio.',
-        ],
-    ],
+    // 'custom' => [
+    //     'title' => [
+    //         'required' => 'Il titolo è un campo obbligatorio.',
+    //     ],
+    //     'thumb' => [
+    //         'required' => 'Il link all\'immagine è un campo obbligatorio.',
+    //     ],
+    //     'price' => [
+    //         'required' => 'Il prezzo è un campo obbligatorio.',
+    //     ],
+    //     'type' => [
+    //         'required' => 'La tipologia è un campo obbligatorio.',
+    //     ],
+    //     'series' => [
+    //         'required' => 'Il nome della serie è un campo obbligatorio.',
+    //     ],
+    //     'sale_date' => [
+    //         'required' => 'La data è un campo obbligatorio.',
+    //     ],
+    // ],
     
     /*
     |--------------------------------------------------------------------------
