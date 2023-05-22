@@ -19,7 +19,7 @@
                     <div class="card text-bg-dark mb-3 h-100 comic-card">
                         <img src="{{ $comic['thumb'] }}" class="card-img-top" alt="{{ $comic['title'] }}">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold text-uppercase" id="comic-title">{{ $comic['title'] }}</h5>
+                            <h5 class="card-title fw-semibold text-uppercase comic-title">{{ $comic['title'] }}</h5>
                         </div>
                         <div class="card-footer">
 
